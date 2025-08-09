@@ -7,13 +7,148 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/posts_avatar_size"
+        android:layout_height="@dimen/posts_avatar_size"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@sample/posts.json/data/authorAvatar"
+    />
+
     <TextView
+        android:id="@+id/autor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_size"
+        android:layout_marginStart="@dimen/margin_size"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@id/published"
+        app:layout_constraintEnd_toStartOf="@id/menu"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="@id/avatar"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@sample/posts.json/data/author"
+
+        />
+
+    <TextView
+        android:id="@+id/published"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/margin_size"
+        app:layout_constraintBottom_toBottomOf="@id/avatar"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toBottomOf="@id/autor"
+        tools:text="@sample/posts.json/data/published" />
+
+    <ImageButton
+        android:id="@+id/menu"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_margin="@dimen/margin_size"
+        android:background="@android:color/transparent"
+        android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_more_vert_24" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_size"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="avatar,published,menu" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_size"
+        android:layout_marginVertical="@dimen/margin_size"
+        app:layout_constraintTop_toTopOf="@id/barrier"
+        tools:text="@sample/posts.json/data/content" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_bottom_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_size"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="content" />
+
+    <ImageButton
+        android:id="@+id/like"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_margin="@dimen/margin_size"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="TODO"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/barrier_bottom_content"
+        app:srcCompat="@drawable/ic_like_24" />
+
+    <TextView
+        android:id="@+id/like_quantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@id/like"
+        app:layout_constraintRight_toLeftOf="@id/repost"
+        app:layout_constraintStart_toEndOf="@id/like"
+        app:layout_constraintTop_toTopOf="@id/like"
+        tools:text="2654" />
+
+    <ImageView
+        android:id="@+id/repost"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="@id/like_quantity"
+        app:layout_constraintStart_toEndOf="@id/like_quantity"
+        app:layout_constraintTop_toTopOf="@id/like_quantity"
+        app:srcCompat="@drawable/ic_share_24" />
+
+    <TextView
+        android:id="@+id/repost_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/icon_size"
+
+        android:gravity="center"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@id/repost"
+        app:layout_constraintStart_toEndOf="@id/repost"
+        app:layout_constraintTop_toTopOf="@id/repost"
+        tools:text="158" />
+
+    <ImageView
+        android:id="@+id/views"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        app:layout_constraintBottom_toBottomOf="@id/views_quantity"
+        app:layout_constraintEnd_toStartOf="@id/views_quantity"
+        app:layout_constraintTop_toTopOf="@id/views_quantity"
+        app:srcCompat="@drawable/ic_views_24" />
+
+    <TextView
+        android:id="@+id/views_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/icon_size"
+        android:layout_margin="@dimen/margin_size"
+        android:gravity="center"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/barrier_bottom_content"
+        tools:text="1521" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
