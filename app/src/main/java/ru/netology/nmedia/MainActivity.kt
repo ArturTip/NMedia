@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
 import java.text.DecimalFormat
+import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
         val post = Post(
             id = 1,
             author = "Нетология. Университет интернет-профессий будущего",
@@ -36,7 +39,6 @@ class MainActivity : AppCompatActivity() {
             repostQuantity.text = formatCount(post.repost)
             like.setImageResource(R.drawable.ic_like_24)
             like.setOnClickListener {
-                println("сработал like")
                 post.likedByMe = !post.likedByMe
                 if (post.likedByMe) {
                     like.setImageResource(R.drawable.ic_liked_24)
@@ -62,11 +64,16 @@ fun formatCount(count: Int): String {
     val df = DecimalFormat("#.0")
     return when {
         count < 1000 -> "$count"
-        count < 10000 -> df.format((count / 1000.0)).replace(",0", "") + "K"
-        count < 1000000 -> "${count / 1000}K"
-        count < 10000000 -> df.format(count / 1000000.0).replace(",0", "") + "M"
-        else -> "${count / 1000000}M"
-
+        count < 10000 -> {
+            val rounded = floor((count / 1000.0) * 10) / 10
+            df.format(rounded).replace(",0", "") + "K"
+        }
+        count < 1000000 -> "${floor(count / 1000.0).toInt()}K"
+        count < 10000000 -> {
+            val rounded = floor((count / 1000000.0) * 10) / 10
+            df.format(rounded).replace(",0", "") + "M"
+        }
+        else -> "${floor(count / 1000000.0).toInt()}M"
     }
 }
 
