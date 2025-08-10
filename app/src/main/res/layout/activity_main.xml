@@ -5,16 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="@dimen/posts_avatar_size"
         android:layout_height="@dimen/posts_avatar_size"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@sample/posts.json/data/authorAvatar"
-    />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@sample/posts.json/data/authorAvatar" />
 
     <TextView
         android:id="@+id/autor"
@@ -93,7 +92,7 @@
         app:srcCompat="@drawable/ic_like_24" />
 
     <TextView
-        android:id="@+id/like_quantity"
+        android:id="@+id/like_count"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -112,13 +111,13 @@
         android:layout_marginStart="16dp"
         android:background="@android:color/transparent"
         android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="@id/like_quantity"
-        app:layout_constraintStart_toEndOf="@id/like_quantity"
-        app:layout_constraintTop_toTopOf="@id/like_quantity"
+        app:layout_constraintBottom_toBottomOf="@id/like_count"
+        app:layout_constraintStart_toEndOf="@id/like_count"
+        app:layout_constraintTop_toTopOf="@id/like_count"
         app:srcCompat="@drawable/ic_share_24" />
 
     <TextView
-        android:id="@+id/repost_quantity"
+        android:id="@+id/repost_count"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/icon_size"
 
@@ -133,13 +132,13 @@
         android:id="@+id/views"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
-        app:layout_constraintBottom_toBottomOf="@id/views_quantity"
-        app:layout_constraintEnd_toStartOf="@id/views_quantity"
-        app:layout_constraintTop_toTopOf="@id/views_quantity"
+        app:layout_constraintBottom_toBottomOf="@id/views_count"
+        app:layout_constraintEnd_toStartOf="@id/views_count"
+        app:layout_constraintTop_toTopOf="@id/views_count"
         app:srcCompat="@drawable/ic_views_24" />
 
     <TextView
-        android:id="@+id/views_quantity"
+        android:id="@+id/views_count"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/icon_size"
         android:layout_margin="@dimen/margin_size"
@@ -148,7 +147,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/barrier_bottom_content"
         tools:text="1521" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
